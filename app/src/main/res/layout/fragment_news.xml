@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#00ff00"
+    tools:context=".home.view.fragment.NewsFragment">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/banner_viewpage"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        tools:ignore="MissingConstraints" />
+    <com.example.feame3.home.view.Banner_Indicator
+        android:id="@+id/banner_indicator"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/banner_viewpage"
+        android:layout_height="5dp"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
