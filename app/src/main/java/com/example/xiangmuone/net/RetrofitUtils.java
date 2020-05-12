@@ -4,16 +4,19 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
+
 import com.example.xiangmuone.app.MyApplication;
 import com.example.xiangmuone.net.api.NetApi;
 import com.example.xiangmuone.net.api.URLConstants;
 import com.google.gson.Gson;
+
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
+
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -220,7 +223,7 @@ public class RetrofitUtils implements INetWork{
                             T t = gson.fromJson(body, type);
                             netCallBack.onSuccess(t);
 
-                        } catch (IOException e) {
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
 
@@ -318,6 +321,4 @@ public class RetrofitUtils implements INetWork{
         }
         return true;
     }
-
-
 }

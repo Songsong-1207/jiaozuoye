@@ -7,7 +7,7 @@ import com.example.xiangmuone.home.contract.RecommendContract;
 import com.example.xiangmuone.home.model.RecommendModel;
 import com.example.xiangmuone.net.INetCallBack;
 
-public class RecommendPresenter extends BasePresenter<RecommendContract.IRecommendView> implements RecommendContract.IRecommendPresenter {
+class RecommendPresenter extends BasePresenter<RecommendContract.IRecommendView> implements RecommendContract.IRecommendPresenter {
 
 
     RecommendContract.IRecommendMode iRecommendMode;
@@ -22,7 +22,6 @@ public class RecommendPresenter extends BasePresenter<RecommendContract.IRecomme
         iRecommendMode.getColumList(new INetCallBack<ColunmBean>() {
             @Override
             public void onSuccess(ColunmBean remBean) {
-
                 mview.setColumList(remBean);
 
             }

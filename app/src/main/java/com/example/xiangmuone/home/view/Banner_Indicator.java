@@ -8,20 +8,15 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.WindowManager;
 
+import androidx.annotation.Nullable;
 
 import com.example.xiangmuone.R;
 
-import io.reactivex.annotations.Nullable;
-
-/**
- * 轮播图下方指示器
- */
 public class Banner_Indicator extends View {
 
 //    画笔
     private Paint paint;
     private Context context;
-
     //    banner图片数量，表示将宽分几分
     private int bannerImageSize;
 
@@ -41,15 +36,13 @@ public class Banner_Indicator extends View {
         this(context, attrs,0);
     }
 
-//    构造方法
     public Banner_Indicator(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
         this.context = context;
         paint = new Paint();
 //设置画笔颜色
         paint.setColor(getResources().getColor(R.color.color_RED));
-//获取屏幕宽度
+//获取屏幕的宽度
         getWindWidth();
     }
 
@@ -71,9 +64,6 @@ public class Banner_Indicator extends View {
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         wind_Width = wm.getDefaultDisplay().getWidth();
     }
-
-
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);

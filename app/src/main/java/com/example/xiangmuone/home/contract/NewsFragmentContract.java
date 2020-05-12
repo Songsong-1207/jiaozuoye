@@ -6,7 +6,6 @@ import com.example.xiangmuone.net.INetCallBack;
 
 public class NewsFragmentContract {
 
-
     public interface INewsView extends BaseView {
         void  setRecommendList(NewsBean newsBean);
     }
