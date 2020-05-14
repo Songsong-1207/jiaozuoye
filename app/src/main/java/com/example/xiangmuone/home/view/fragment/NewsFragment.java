@@ -1,8 +1,6 @@
 package com.example.xiangmuone.home.view.fragment;
 
-
 import android.view.View;
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;

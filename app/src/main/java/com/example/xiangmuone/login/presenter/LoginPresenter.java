@@ -1,6 +1,5 @@
 package com.example.xiangmuone.login.presenter;
 
-
 import android.util.Log;
 
 import com.example.xiangmuone.base.BasePresenter;
@@ -9,6 +8,8 @@ import com.example.xiangmuone.login.bean.VerfiedBean;
 import com.example.xiangmuone.login.contract.LoginContract;
 import com.example.xiangmuone.login.model.LoginModel;
 import com.example.xiangmuone.net.INetCallBack;
+
+import okhttp3.ResponseBody;
 
 public class LoginPresenter extends BasePresenter<LoginContract.ILoginView> implements LoginContract.ILoginPresenter {
     LoginContract.ILoginMode iLoginMode;

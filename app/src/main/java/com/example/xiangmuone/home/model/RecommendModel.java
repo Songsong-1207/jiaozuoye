@@ -6,7 +6,6 @@ import com.example.xiangmuone.net.INetCallBack;
 import com.example.xiangmuone.net.NetWorkFactory;
 import com.example.xiangmuone.net.ParamsUtils;
 import com.example.xiangmuone.net.api.URLConstants;
-
 import java.util.HashMap;
 
 public class RecommendModel implements RecommendContract.IRecommendMode {

@@ -224,7 +224,7 @@ public class RetrofitUtils implements INetWork{
                             netCallBack.onSuccess(t);
 
                         } catch (Exception e) {
-                            e.printStackTrace();
+                            netCallBack.onError(new Throwable("请求失败"));
                         }
 
                     }
@@ -233,7 +233,7 @@ public class RetrofitUtils implements INetWork{
                     public void onError(Throwable e) {
 
                         Log.e("TAG","请问错误="+e.getMessage());
-
+                        netCallBack.onError(new Throwable("请求失败"));
                     }
 
                     @Override

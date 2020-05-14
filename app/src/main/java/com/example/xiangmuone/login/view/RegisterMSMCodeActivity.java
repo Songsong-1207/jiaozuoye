@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.xiangmuone.R;
@@ -20,10 +21,12 @@ import java.util.regex.Pattern;
 public class RegisterMSMCodeActivity extends BaseActivity<RegisiterMSMPresenter> implements RegisterMSMContract.IRegisterMSMView {
     private EditText reg_phone_num;
     private EditText reg_vdeified;
-    private Button reg_send_vdeified;
+    private TextView reg_send_vdeified;
     private Button reg_but;
     private String reg_edit_sms_code;
     private String reg_edit_phone_num;
+    private TextView verified_login;
+    private TextView password_login;
     @Override
     protected RegisiterMSMPresenter initPresenter() {
         return new RegisiterMSMPresenter();
@@ -32,9 +35,12 @@ public class RegisterMSMCodeActivity extends BaseActivity<RegisiterMSMPresenter>
     @Override
     public void initView() {
         reg_phone_num = findViewById(R.id.reg_phone_num);
-        reg_vdeified = findViewById(R.id.reg_vdeified);
-        reg_send_vdeified = findViewById(R.id.reg_send_vdeified);
+        reg_vdeified = findViewById(R.id.reg_verified);
+        reg_send_vdeified = findViewById(R.id.reg_send_verfied_bug);
         reg_but = findViewById(R.id.reg_but);
+        verified_login = findViewById(R.id.verified_login);//验证码登录按钮
+        password_login = findViewById(R.id.password_login);//密码登录按钮
+
     }
 
     @Override

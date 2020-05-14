@@ -5,11 +5,10 @@ import android.app.Application;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.mmkv.MMKV;
-
-import io.reactivex.annotations.Nullable;
 
 public class MyApplication extends Application {
 

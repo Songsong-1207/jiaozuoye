@@ -7,7 +7,7 @@ import com.example.xiangmuone.home.contract.RecommendContract;
 import com.example.xiangmuone.home.model.RecommendModel;
 import com.example.xiangmuone.net.INetCallBack;
 
-class RecommendPresenter extends BasePresenter<RecommendContract.IRecommendView> implements RecommendContract.IRecommendPresenter {
+public class RecommendPresenter extends BasePresenter<RecommendContract.IRecommendView> implements RecommendContract.IRecommendPresenter {
 
 
     RecommendContract.IRecommendMode iRecommendMode;

@@ -6,7 +6,6 @@ import com.example.xiangmuone.R;
 import com.example.xiangmuone.base.BaseFragment;
 import com.example.xiangmuone.base.BasePresenter;
 
-
 public class VedioFragmet extends BaseFragment {
     @Override
     protected BasePresenter initPresenter() {

@@ -1,6 +1,5 @@
 package com.example.xiangmuone.login.contract;
 
-
 import com.example.xiangmuone.base.BaseView;
 import com.example.xiangmuone.login.bean.AffirmRegisterBean;
 import com.example.xiangmuone.login.bean.VerfiedBean;

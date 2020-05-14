@@ -54,8 +54,7 @@ public class RecommendFragment extends BaseFragment<RecommendPresenter> implemen
 
 
     private void initTab(final ColunmBean columList) {
-//        new NewsFragmentAdapter()
-//        newsFragmentAdapter = new NewsFragmentAdapter(getChildFragmentManager(), fragments);
+        newsFragmentAdapter = new NewsFragmentAdapter(getChildFragmentManager(), fragments);
         viewPager.setAdapter(newsFragmentAdapter);
         tabLayout.setupWithViewPager(viewPager);
         viewPager.setOffscreenPageLimit(columList.getData().getList().size());
@@ -109,7 +108,7 @@ public class RecommendFragment extends BaseFragment<RecommendPresenter> implemen
             for (int i = 0; i < columList.getData().getList().size(); i++) {
                 TextView textView = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.recommend_tab_item, null);
                 textView.setGravity(Gravity.CENTER);
-//                textView.setText(columList);
+                //获取名字
                 textView.setText(columList.getData().getList().get(i).getName());
                 tabLayout.getTabAt(i).setCustomView(textView);
             }

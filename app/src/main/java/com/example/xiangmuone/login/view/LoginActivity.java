@@ -1,16 +1,17 @@
 package com.example.xiangmuone.login.view;
 
-
 import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.xiangmuone.R;
 import com.example.xiangmuone.base.BaseActivity;
+import com.example.xiangmuone.home.view.HomeActivity;
 import com.example.xiangmuone.login.bean.AffirmRegisterBean;
 import com.example.xiangmuone.login.bean.VerfiedBean;
 import com.example.xiangmuone.login.contract.LoginContract;
@@ -24,20 +25,26 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     private EditText phone_num;
     private EditText vdeified;
-    private Button send_vdeified;
+    private TextView send_vdeified;
     private Button login_but;
+    private TextView pass_login;
+    private TextView login_to_reg;
+
 
     @Override
     protected LoginPresenter initPresenter() {
-        return  new LoginPresenter();
+        return new LoginPresenter();
     }
 
     @Override
     public void initView() {
-        phone_num = findViewById(R.id.phone_num);
-        vdeified = findViewById(R.id.vdeified);
-        send_vdeified = findViewById(R.id.send_vdeified);
-        login_but = findViewById(R.id.login_but);
+        phone_num = findViewById(R.id.cell_phone_number);
+        vdeified = findViewById(R.id.import_verification);
+        send_vdeified = findViewById(R.id.verification);
+        login_but = findViewById(R.id.verification_login);
+        pass_login = findViewById(R.id.pass_login);
+        login_to_reg = findViewById(R.id.login_to_reg);
+
     }
 
     @Override
@@ -50,6 +57,20 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     public void initLinstener() {
+        pass_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        login_to_reg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterMSMCodeActivity.class);
+                startActivity(intent);
+            }
+        });
         //发送验证码
         send_vdeified.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,8 +89,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         login_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 edit_phone_num = phone_num.getText().toString();
-                 edit_sms_code = vdeified.getText().toString();
+                edit_phone_num = phone_num.getText().toString();
+                edit_sms_code = vdeified.getText().toString();
 //                String  =vdeified.getText().toString();
                 if (!TextUtils.isEmpty(edit_phone_num) && isMobileNO(edit_phone_num)) {
                     if (!TextUtils.isEmpty(edit_sms_code)) {
@@ -77,11 +98,12 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                         Pattern pattern = Pattern.compile("\\d{6}");
                         boolean matches = pattern.matcher(edit_sms_code).matches();
                         if (matches) {
-                            Log.i("TAG", "onClick: 验证码值"+edit_sms_code);
-//提交到服务器
+                            Log.i("TAG", "onClick: 验证码值" + edit_sms_code);
+                            //提交到服务器
                             mPresenter.checkSmsCode(edit_phone_num, edit_sms_code, "4");
-                        } else Toast.makeText(LoginActivity.this, "验证码只能是6位", Toast.LENGTH_SHORT).show();
-                    }else Toast.makeText(LoginActivity.this, "输入验证码", Toast.LENGTH_SHORT).show();
+                        } else
+                            Toast.makeText(LoginActivity.this, "验证码只能是6位", Toast.LENGTH_SHORT).show();
+                    } else Toast.makeText(LoginActivity.this, "输入验证码", Toast.LENGTH_SHORT).show();
                 } else Toast.makeText(LoginActivity.this, "请输入正确的手机号", Toast.LENGTH_SHORT).show();
 
             }
@@ -110,7 +132,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     public void getVeridied(VerfiedBean s) {
-        if (s.getCode()==1) {
+        if (s.getCode() == 1) {
             Toast.makeText(this, "成功", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "错误", Toast.LENGTH_SHORT).show();
@@ -120,7 +142,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     public void getLoginResylt(AffirmRegisterBean affirmRegisterBean) {
-        if (null != affirmRegisterBean.getData().getToken().getValue() && affirmRegisterBean.getData().getToken().getValue()!="") {
+        if (null != affirmRegisterBean.getData().getToken().getValue() && affirmRegisterBean.getData().getToken().getValue() != "") {
             MMKV mmkv = MMKV.defaultMMKV();
             mmkv.encode("token", affirmRegisterBean.getData().getToken().getValue());
             mmkv.encode("expire_time", affirmRegisterBean.getData().getToken().getExpire_time());
@@ -128,6 +150,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
             mmkv.encode("nickname", affirmRegisterBean.getData().getUser_info().getNickname());
             mmkv.encode("mobile", affirmRegisterBean.getData().getUser_info().getMobile());
             Toast.makeText(this, "登陆成功跳转HomeActivity", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
         }
     }
 
@@ -135,12 +158,12 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Override
     public void checkSmsCodeResult(VerfiedBean verfiedBean) {
         if (verfiedBean.getCode() == 1) {
-            mPresenter.login(edit_phone_num,edit_sms_code);
+            mPresenter.login(edit_phone_num, edit_sms_code);
         } else Toast.makeText(this, "验证码错误", Toast.LENGTH_SHORT).show();
     }
 
-    public void startRegis(View view) {
-        Intent intent = new Intent(LoginActivity.this, RegisterMSMCodeActivity.class);
-        startActivity(intent);
-    }
+//    public void startRegis(View view) {
+//        Intent intent = new Intent(LoginActivity.this, RegisterMSMCodeActivity.class);
+//        startActivity(intent);
+//    }
 }

@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 /**
  * 懒加载Fragment
  */
-public abstract class BaseLayFragment<T extends BasePresenter> extends Fragment   implements BaseView {
+public abstract class BaseLayFragment<T extends BasePresenter> extends Fragment  implements BaseView {
 
     protected T mPresenter;
     private boolean IS_VIEW_CREATED = false;
